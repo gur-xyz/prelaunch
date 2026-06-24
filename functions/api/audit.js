@@ -5,21 +5,28 @@
  * Returns structured audit scores and issues
  */
 
-import { OpenAI } from 'openai';
 import * as cheerio from 'cheerio';
 
-// ─── Analyze with OpenRouter ────────────────────────────────────────────
-async function analyzeWithAI(pageData) {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENROUTER_API_KEY,
-    baseURL: 'https://openrouter.ai/api/v1',
-    defaultHeaders: {
+// ─── Analyze with OpenRouter (direct fetch — no process.env dependency) ──
+async function analyzeWithAI(pageData, apiKey) {
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
       'HTTP-Referer': 'https://crit.9roq.com',
       'X-Title': 'Prelaunch — Startup Auditor'
-    }
-  });
-
-  const prompt = `You are a brutally honest startup auditor. Analyze this startup's landing page and score it across 5 dimensions (0-10 each).
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a brutally honest startup auditor. Return only valid JSON.'
+        },
+        {
+          role: 'user',
+          content: `You are a brutally honest startup auditor. Analyze this startup's landing page and score it across 5 dimensions (0-10 each).
 
 Return ONLY valid JSON with this exact structure:
 {
@@ -56,20 +63,22 @@ Testimonials visible: ${pageData.hasTestimonials}
 Customer logos: ${pageData.hasLogos}
 Pricing page found: ${pageData.pricingPageFound}
 Schema types: ${pageData.schemaTypes.join(', ') || 'none'}
-Word count: ${pageData.wordCount}`;
-
-  const response = await openai.chat.completions.create({
-    model: 'openai/gpt-4o-mini',
-    messages: [
-      { role: 'system', content: 'You are a startup auditor. Return only valid JSON.' },
-      { role: 'user', content: prompt }
-    ],
-    temperature: 0.7,
-    max_tokens: 1500,
-    response_format: { type: 'json_object' }
+Word count: ${pageData.wordCount}`
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 1500,
+      response_format: { type: 'json_object' }
+    })
   });
 
-  return JSON.parse(response.choices[0].message.content);
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`OpenRouter API error (${response.status}): ${errorText.slice(0, 200)}`);
+  }
+
+  const data = await response.json();
+  return JSON.parse(data.choices[0].message.content);
 }
 
 // ─── Scrape URL ─────────────────────────────────────────────────────────
@@ -190,7 +199,7 @@ export async function onRequest(context) {
 
     // Scrape and analyze
     const pageData = await scrapeUrl(normalizedUrl);
-    const analysis = await analyzeWithAI(pageData);
+    const analysis = await analyzeWithAI(pageData, context.env.OPENROUTER_API_KEY);
 
     return new Response(JSON.stringify({ url: normalizedUrl, ...analysis }), {
       status: 200,
