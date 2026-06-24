@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prelaunch — Audit your startup. Brutal honesty.</title>
+  <meta name="description" content="Paste your startup URL. Get a brutal audit across 5 dimensions. Know if you're building the right thing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⟁</text></svg>" />
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────────────────── -->
+  <nav class="nav container">
+    <div class="nav-logo">⟁ <span>prelaunch</span></div>
+    <ul class="nav-links">
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#samples">Sample</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#cta">Audit</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Live — crit.9roq.com
+      </div>
+
+      <h1>
+        Paste your URL.<br />
+        Get a <span class="highlight">brutal audit</span>.
+      </h1>
+
+      <p>
+        Prelaunch scans your startup's live site and scores you across
+        5 dimensions — Product Fit, GEO, SEO, Trust, Conversion —
+        with ranked, actionable fixes. No fluff.
+      </p>
+
+      <div class="input-group">
+        <input type="url" placeholder="https://yourstartup.com" autocomplete="off" spellcheck="false" />
+        <button>Audit →</button>
+      </div>
+      <div class="status-msg"></div>
+
+      <!-- ─── Animated Terminal ───────────────────────────────────────── -->
+      <div class="terminal-wrapper">
+        <div class="terminal-header">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-title">prelaunch — audit report</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <span class="terminal-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it Works ───────────────────────────────────────────────── -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">How it Works</div>
+        <h2 class="section-title">Three steps to clarity</h2>
+        <p class="section-subtitle">From URL to actionable insight in under 30 seconds. No signup required.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon">🔗</div>
+          <h3>Paste Your URL</h3>
+          <p>Drop your startup's landing page URL. We fetch the live site — headline, pricing, CTAs, features, social proof, and schema markup.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">02</div>
+          <div class="step-icon">📊</div>
+          <h3>Get Scored</h3>
+          <p>AI evaluates your page across 5 dimensions. Product clarity, GEO readiness, SEO hygiene, trust signals, and conversion optimization.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">03</div>
+          <div class="step-icon">⚡</div>
+          <h3>Execute Fixes</h3>
+          <p>Receive ranked, specific fixes ordered by impact. Pro plan unlocks the full report. Loop plan generates executable GitHub issues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Sample Report ──────────────────────────────────────────────── -->
+  <section class="section sample-section" id="samples">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Sample Report</div>
+        <h2 class="section-title">What you get</h2>
+        <p class="section-subtitle">Terminal-formatted output with dimension scores and ranked issues. Brutal, direct, useful.</p>
+      </div>
+
+      <div class="terminal-sample reveal">
+        <div class="terminal-wrapper">
+          <div class="terminal-header">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-title">bash — prelaunch audit</span>
+          </div>
+          <div class="terminal-body" style="color: #22c55e; white-space: pre; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.65; overflow-x: auto;">
+╔══════════════════════════════════════════╗
+║          PRELAUNCH AUDIT                  ║
+║          https://example.com              ║
+╚══════════════════════════════════════════╝
+
+ PRODUCT FIT     ████████░░░░  3.1/10
+ GEO             ██░░░░░░░░░░  1.2/10
+ SEO             █████░░░░░░░  4.8/10
+ TRUST           ██████░░░░░░  5.5/10
+ CONVERSION      ████████░░░░  7.2/10
+
+ ⚠ TOP ISSUES
+
+ 1. [PRODUCT] Headline is generic — "AI-powered platform"
+    → Fix: Name the specific job your customer hires you for
+    → Impact: High
+
+ 2. [GEO] No schema markup found
+    → Fix: Add Organization + Product schema
+    → Impact: High
+
+ 3. [TRUST] No testimonials or logos visible
+    → Fix: Add customer logos above the fold
+    → Impact: Medium
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Full report + 8 more fixes at crit.9roq.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class="terminal-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pricing ────────────────────────────────────────────────────── -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Start free, scale when you need more</h2>
+        <p class="section-subtitle">One URL, one audit. No hidden fees. Just brutal honesty about your startup.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="pricing-name">Free</div>
+          <div class="pricing-desc">Quick scan to know where you stand</div>
+          <div class="pricing-price"><span class="currency">$</span>0</div>
+          <ul class="pricing-features">
+            <li>URL scan + overall score</li>
+            <li>Top 3 issues ranked by impact</li>
+            <li>5-dimension breakdown preview</li>
+            <li class="missing">Full report across all dimensions</li>
+            <li class="missing">Prioritized fix list</li>
+            <li class="missing">Executable GitHub issues</li>
+          </ul>
+          <a href="#cta" class="pricing-btn">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured reveal">
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-desc">Full diagnostic for serious founders</div>
+          <div class="pricing-price"><span class="currency">$</span>9.99<span class="period"> /mo</span></div>
+          <ul class="pricing-features">
+            <li>Everything in Free</li>
+            <li>Full report across 5 dimensions</li>
+            <li>Prioritized fix list with code snippets</li>
+            <li>Re-audit anytime (unlimited URLs)</li>
+            <li class="missing">Executable GitHub issues</li>
+            <li class="missing">Agent prompts + auto-fix scripts</li>
+          </ul>
+          <a href="#cta" class="pricing-btn">Get Pro</a>
+        </div>
+
+        <div class="pricing-card reveal">
+          <div class="pricing-name">Loop</div>
+          <div class="pricing-desc">Ship fixes on autopilot</div>
+          <div class="pricing-price"><span class="currency">$</span>19.99<span class="period"> /mo</span></div>
+          <ul class="pricing-features">
+            <li>Everything in Pro</li>
+            <li>Executable GitHub issues + PRs</li>
+            <li>Agent prompts for each fix</li>
+            <li>Auto-fix shell scripts</li>
+            <li>Priority API access</li>
+            <li>Slack integration</li>
+          </ul>
+          <a href="#cta" class="pricing-btn">Get Loop</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─────────────────────────────────────────────────────────── -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="section-label">Ready?</div>
+      <h2>Audit your startup</h2>
+      <p>One URL. 30 seconds. Brutal honesty about what's working and what's not.</p>
+
+      <div class="input-group">
+        <input type="url" placeholder="https://yourstartup.com" autocomplete="off" spellcheck="false" />
+        <button>Audit →</button>
+      </div>
+      <div class="status-msg"></div>
+
+      <p style="margin-top: 32px; font-size: 0.8rem; color: #444;">
+        No email required. Free audit includes overall score + top 3 issues.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────────── -->
+  <footer class="footer container">
+    <div>⟁ prelaunch — built by <a href="https://github.com/gur-xyz" target="_blank" rel="noopener">9roq</a></div>
+    <div class="footer-links">
+      <a href="https://github.com/gur-xyz/prelaunch" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://crit.9roq.com" target="_blank" rel="noopener">crit.9roq.com</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
