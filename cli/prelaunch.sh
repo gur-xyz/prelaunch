@@ -32,7 +32,7 @@ box_mid_center() {
 sep() { echo -e "${DIM}$(printf '━%.0s' $(seq 1 $1))${RESET}"; }
 
 # ─── Config ─────────────────────────────────────────────────────────────
-API_ENDPOINT="${PRELAUNCH_API:-https://crit.9roq.com/api/audit}"
+API_ENDPOINT="${PRELAUNCH_API:-https://prelaunch-8x8.pages.dev/api/audit}"
 WIDTH=55
 
 # ─── URL Input ──────────────────────────────────────────────────────────
